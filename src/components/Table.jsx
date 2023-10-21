@@ -8,7 +8,6 @@ export const Table = ({ count, setCount, hits, setHits, setStarTimer, board, boa
     
     const [imgAnt, setImgAnt] = useState(0)
     const [indexImgAnt, setIndexImgAnt] = useState(0)
-           
 
     return (
         <section className="table">
