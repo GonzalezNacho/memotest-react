@@ -1,42 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css'
 import { Table } from './components/Table'
 import { Modal } from './components/Modal'
 import { mezclarArray } from "./logic/board"
+import { useTimer } from './hooks/useTimer'
+
 
 
 function App() {
   
   const [count, setCount] = useState(0)
-  const [hits, setHits] = useState(0)
-  const [time, setTime] = useState(30)
-  const [startTimer, setStarTimer] = useState(false)
   const [board, setBoard] = useState(mezclarArray)
   const [boardImg, setBoardImg] = useState(Array(16).fill(null))
-  const [finish, setFinish] = useState(false)
+  const {hits, setHits, time, setTime, setStarTimer, finish, setFinish} = useTimer()
   const modal = finish ? 'modal--show': ''
   
-
-  
-  useEffect(() => {
-    let intervalId = null
-    if( startTimer ) {
-      intervalId = setInterval(() => {
-        setTime(prev => prev -=1)
-      },1000)
-    } 
-    return () => {
-      clearInterval(intervalId)
-    }
-  },[startTimer])
-
-  useEffect (() => {
-    if (time == 0 || hits == 8) {
-      setFinish(true)
-      setStarTimer(false)
-    }
-  },[time, hits])
-
   const resetGame = () => {
     setFinish(false)
     setStarTimer(false)
