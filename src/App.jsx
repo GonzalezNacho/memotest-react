@@ -12,8 +12,10 @@ function App() {
   const [count, setCount] = useState(0)
   const [board, setBoard] = useState(mezclarArray)
   const [boardImg, setBoardImg] = useState(Array(16).fill(null))
-  const {hits, setHits, time, setTime, setStarTimer, finish, setFinish} = useTimer()
+  const [mute, setMute] = useState(false)
+  const {hits, setHits, time, setTime, setStarTimer, finish, setFinish} = useTimer({mute})
   const modal = finish ? 'modal--show': ''
+  const muteIcon = mute ? 'unmute' : 'mute'
   
   const resetGame = () => {
     setFinish(false)
@@ -25,12 +27,16 @@ function App() {
     setBoard(mezclarArray)
   }
 
+  const handleClickMute = () => {
+    setMute(!mute)
+  }
+
   return (
     <>
       <main>
         <section className="section1">
-            <h1> memotest</h1>
-            <Table count={count} setCount={setCount} hits={hits} setHits={setHits} setStarTimer={setStarTimer} board={board} boardImg={boardImg} setBoardImg={setBoardImg}></Table>
+              <h1> memotest</h1>
+            <Table count={count} setCount={setCount} hits={hits} setHits={setHits} setStarTimer={setStarTimer} board={board} boardImg={boardImg} setBoardImg={setBoardImg} mute={mute}></Table>
         </section>
         <section className="section2">
             <div>
@@ -38,7 +44,12 @@ function App() {
               <h2 className="estadisticas">Tiempo: {time} segundos</h2>
               <h2 className="estadisticas">Movimientos: {Math.floor(count/2)}</h2>
             </div>
-            <button onClick={resetGame} id='reset'>reiniciar Juego</button>
+            <div id='botonera'>
+              <button onClick={resetGame} id='reset'>reiniciar Juego</button>
+              <div id='botonMute'>
+                <img src={`src/assets/img/${muteIcon}.svg`} onClick={handleClickMute}></img>
+              </div>
+            </div>
         </section>
         
         <section className={`modal ${modal}`}>

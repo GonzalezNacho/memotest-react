@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Square } from "./Square"
 
-export const Table = ({ count, setCount, hits, setHits, setStarTimer, board, boardImg, setBoardImg }) => {
+export const Table = ({ count, setCount, hits, setHits, setStarTimer, board, boardImg, setBoardImg, mute }) => {
     
     const [imgAnt, setImgAnt] = useState(0)
     const [indexImgAnt, setIndexImgAnt] = useState(0)
@@ -28,6 +28,7 @@ export const Table = ({ count, setCount, hits, setHits, setStarTimer, board, boa
                     setIndexImgAnt = {setIndexImgAnt}
                     boardImg = {boardImg}
                     setBoardImg = {setBoardImg}
+                    mute={mute}
                 >
                   {boardImg[index] ? <img src={`src/assets/img/${img}.png`}></img> : ''}
                 </Square>

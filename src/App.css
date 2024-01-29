@@ -54,11 +54,33 @@ button:hover {
   cursor:pointer;
 }
 
+#botonera {
+  flex-direction: row;
+}
+
 #reset {
   height: 50px;
   width: 120px;
   color: #f26250;
   margin: 10px auto;
+}
+
+#botonMute {
+  height: 40px;
+  width: 40px;
+  background-color: #ffffff34;
+  border-radius: 50%;
+  margin: auto;
+}
+
+#botonMute:hover {
+  cursor: pointer;
+  background-color: #f263507a;
+}
+
+#botonMute img {
+  margin: 4px;
+  height: 80%;
 }
 
 #reset:hover {
