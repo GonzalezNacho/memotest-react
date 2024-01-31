@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { Table } from './components/Table'
 import { Modal } from './components/Modal'
+import { Mute } from './components/Mute'
 import { mezclarArray } from "./logic/board"
 import { useTimer } from './hooks/useTimer'
 
@@ -15,7 +16,7 @@ function App() {
   const [mute, setMute] = useState(false)
   const {hits, setHits, time, setTime, setStarTimer, finish, setFinish} = useTimer({mute})
   const modal = finish ? 'modal--show': ''
-  const muteIcon = mute ? 'unmute' : 'mute'
+  
   
   const resetGame = () => {
     setFinish(false)
@@ -27,15 +28,13 @@ function App() {
     setBoard(mezclarArray)
   }
 
-  const handleClickMute = () => {
-    setMute(!mute)
-  }
+  
 
   return (
     <>
       <main>
         <section className="section1">
-              <h1> memotest</h1>
+            <h1> memotest</h1>
             <Table count={count} setCount={setCount} hits={hits} setHits={setHits} setStarTimer={setStarTimer} board={board} boardImg={boardImg} setBoardImg={setBoardImg} mute={mute}></Table>
         </section>
         <section className="section2">
@@ -46,9 +45,7 @@ function App() {
             </div>
             <div id='botonera'>
               <button onClick={resetGame} id='reset'>reiniciar Juego</button>
-              <div id='botonMute'>
-                <img src={`src/assets/img/${muteIcon}.svg`} onClick={handleClickMute}></img>
-              </div>
+              <Mute mute={mute} setMute={setMute} />
             </div>
         </section>
         
