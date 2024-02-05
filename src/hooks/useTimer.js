@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 
-export function useTimer({mute}) {
+export function useTimer({mute,play}) {
 
     const [hits, setHits] = useState(0)
     const [time, setTime] = useState(30)
@@ -16,13 +16,15 @@ export function useTimer({mute}) {
         let intervalId = null
         if( startTimer ) {
           intervalId = setInterval(() => {
-            setTime(prev => prev -=1)
+            if (play) {
+              setTime(prev => prev -=1)
+            }
           },1000)
         } 
         return () => {
           clearInterval(intervalId)
         }
-      },[startTimer])
+      },[startTimer, play])
     
       useEffect (() => {
         if (time == 0 || hits == 8) {

@@ -81,7 +81,10 @@ button:hover {
 #botonMute img {
   margin: 4px;
   height: 80%;
+  width: 80%;
 }
+
+
 
 #reset:hover {
   color: #fff;
