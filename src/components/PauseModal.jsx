@@ -1,12 +1,13 @@
 import { BotonChangeState } from "./BotonChangeState"
 
 export const PauseModal = ({ hits, time, count, resetGame, play, setPlay }) => {
+    if (play) return null
     const resultadoPartida = 'Pausa'
     const imagenModal = <img src="src/assets/img/sleep.png" alt="imagen de Mario y Luigi"></img>
     const info = <h4>aciertos: {hits} aciertos</h4>
 
     return (
-        <>
+        <section className='modal'>
             <div className="modal_container">
                 <h2>{resultadoPartida}</h2>
                 { imagenModal }
@@ -16,6 +17,6 @@ export const PauseModal = ({ hits, time, count, resetGame, play, setPlay }) => {
                 <BotonChangeState condicion={play} setCondicion={setPlay} option1={'pause'} option2={'play'} /> 
                 <a href="#" className="modalReiniciar" onClick= {resetGame}>reiniciar juego</a>
             </div>
-        </>
+        </section>
     )
 }
