@@ -12,10 +12,12 @@ function App() {
   const [count, setCount] = useState(0)
   const [board, setBoard] = useState(mezclarArray)
   const [mute, setMute] = useState(true)
+  const [reset, setReset] = useState(false)
   const [play, setPlay] = useState(true)
   const {hits, setHits, time, setTime, setStarTimer, finish, setFinish} = useTimer({mute, play})
   
   const resetGame = () => {
+    setReset(true)
     setFinish(false)
     setStarTimer(false)
     setTime(30)
@@ -29,7 +31,7 @@ function App() {
       <main>
         <section className="section1">
           <h1> memotest</h1>
-          <Table setCount={setCount} setHits={setHits} setStarTimer={setStarTimer} board={board} mute={mute}></Table>
+          <Table setCount={setCount} setHits={setHits} setStarTimer={setStarTimer} board={board} mute={mute} reset={reset} setReset={setReset}></Table>
         </section>
         <section className="section2">
           <div>
@@ -43,13 +45,8 @@ function App() {
             <BotonChangeState condicion={play} setCondicion={setPlay} options={['pause','play']} />
           </div>
         </section>
-        
-        <section>
-          <Modal hits={hits} time ={time} count={count} resetGame={resetGame} finish={finish}></Modal>
-        </section>
-        <section>
-          <PauseModal hits={hits} time ={time} count={count} resetGame={resetGame} play={play} setPlay={setPlay}></PauseModal>
-        </section>
+        <Modal hits={hits} time ={time} count={count} resetGame={resetGame} finish={finish}></Modal>
+        <PauseModal hits={hits} time ={time} count={count} resetGame={resetGame} play={play} setPlay={setPlay}></PauseModal>
       </main>
       <footer>
         <p>Desarrollado por <a href="https://github.com/GonzalezNacho" rel='noreferrer' target="_blank">González Ignacio</a></p>

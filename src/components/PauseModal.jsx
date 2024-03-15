@@ -14,8 +14,8 @@ export const PauseModal = ({ hits, time, count, resetGame, play, setPlay }) => {
                 { info }
                 <h4>movimientos: {count} movimientos</h4>
                 <h4>Tiempo restante: {30-time} segundos</h4>
-                <BotonChangeState condicion={play} setCondicion={setPlay} option1={'pause'} option2={'play'} /> 
-                <a href="#" className="modalReiniciar" onClick= {resetGame}>reiniciar juego</a>
+                <BotonChangeState condicion={play} setCondicion={setPlay} options={['pause','play']} /> 
+                <a className="modalReiniciar" onClick= {resetGame}>reiniciar juego</a>
             </div>
         </section>
     )

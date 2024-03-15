@@ -4,12 +4,18 @@ const clickAudio = new Audio('src/assets/sounds/click.wav')
 const aciertoAudio = new Audio('src/assets/sounds/acierto.wav')
 const errorAudio = new Audio('src/assets/sounds/error.wav')
 
-export const Table = ({setCount, setHits, setStarTimer, board, mute }) => {
-    
-    
+export const Table = ({setCount, setHits, setStarTimer, board, mute, reset, setReset }) => {
 
     const [selected, setSelected] = useState([])
     const [guessed, setGuessed] = useState([])
+
+    useEffect(() => {
+      if (reset) {
+        setSelected([])
+        setGuessed([])
+        setReset(false)
+      }
+    },[reset])
 
     useEffect(() => {
       if (guessed.includes(selected[0])){
@@ -36,8 +42,6 @@ export const Table = ({setCount, setHits, setStarTimer, board, mute }) => {
         mute && aciertoAudio.play()
       }
     },[guessed])
-    
-    
     
     return (
         <section className="table">     
