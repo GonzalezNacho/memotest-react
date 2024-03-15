@@ -1,5 +1,5 @@
-export const BotonChangeState = ({condicion, setCondicion, option1, option2}) => {
-    const icon = condicion ? option1 : option2
+export const BotonChangeState = ({condicion, setCondicion, options}) => {
+    const icon = condicion ? options[0] : options[1]
 
     const handleClick = () => {
         setCondicion(!condicion)

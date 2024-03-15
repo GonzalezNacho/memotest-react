@@ -11,7 +11,6 @@ function App() {
   
   const [count, setCount] = useState(0)
   const [board, setBoard] = useState(mezclarArray)
-  const [boardImg, setBoardImg] = useState(Array(16).fill(null))
   const [mute, setMute] = useState(true)
   const [play, setPlay] = useState(true)
   const {hits, setHits, time, setTime, setStarTimer, finish, setFinish} = useTimer({mute, play})
@@ -22,7 +21,6 @@ function App() {
     setTime(30)
     setCount(0)
     setHits(0)
-    setBoardImg(Array(16).fill(null))
     setBoard(mezclarArray)
   }
 
@@ -31,18 +29,18 @@ function App() {
       <main>
         <section className="section1">
           <h1> memotest</h1>
-          <Table count={count} setCount={setCount} hits={hits} setHits={setHits} setStarTimer={setStarTimer} board={board} boardImg={boardImg} setBoardImg={setBoardImg} mute={mute}></Table>
+          <Table setCount={setCount} setHits={setHits} setStarTimer={setStarTimer} board={board} mute={mute}></Table>
         </section>
         <section className="section2">
           <div>
             <h2 className="estadisticas">Aciertos: {hits}</h2>
             <h2 className="estadisticas">Tiempo: {time} segundos</h2>
-            <h2 className="estadisticas">Movimientos: {Math.floor(count/2)}</h2>
+            <h2 className="estadisticas">Movimientos: {count}</h2>
           </div>
           <div id='botonera'>
             <button onClick={resetGame} id='reset'>reiniciar Juego</button>
-            <BotonChangeState condicion={mute} setCondicion={setMute} option1={'unmute'} option2={'mute'} />
-            <BotonChangeState condicion={play} setCondicion={setPlay} option1={'pause'} option2={'play'} />
+            <BotonChangeState condicion={mute} setCondicion={setMute} options={['unmute','mute']} />
+            <BotonChangeState condicion={play} setCondicion={setPlay} options={['pause','play']} />
           </div>
         </section>
         

@@ -1,41 +1,62 @@
-import { useState } from 'react'
-import { Square } from "./Square"
+import { useState, useEffect } from 'react'
 
-export const Table = ({ count, setCount, hits, setHits, setStarTimer, board, boardImg, setBoardImg, mute }) => {
+const clickAudio = new Audio('src/assets/sounds/click.wav')
+const aciertoAudio = new Audio('src/assets/sounds/acierto.wav')
+const errorAudio = new Audio('src/assets/sounds/error.wav')
+
+export const Table = ({setCount, setHits, setStarTimer, board, mute }) => {
     
-    const [imgAnt, setImgAnt] = useState(0)
-    const [indexImgAnt, setIndexImgAnt] = useState(0)
-           
+    
 
+    const [selected, setSelected] = useState([])
+    const [guessed, setGuessed] = useState([])
+
+    useEffect(() => {
+      if (guessed.includes(selected[0])){
+        setSelected([])
+      } else {
+        if (selected.length == 1){
+          setStarTimer(true)
+          mute && clickAudio.play()
+        }
+        if (selected.length == 2) {
+          if (selected[0].split('|')[1] == selected[1].split('|')[1]) {
+            setGuessed(guessed => [...guessed, ...selected])
+          } else {
+            mute && errorAudio.play()
+          }
+          setTimeout(() => setSelected([]), 300)
+        }
+      }
+    },[selected])
+
+    useEffect(() => {
+      if(guessed.length > 0){
+        setHits(prev => prev + 1)
+        mute && aciertoAudio.play()
+      }
+    },[guessed])
+    
+    
+    
     return (
-        <section className="table">
-            
+        <section className="table">     
         {
-          board.map((img, index) => {
+          board.map((img) => {
+            const numberImg = img.split('|')[1]
             return (
-                <Square 
-                    key={index} 
-                    img={img} 
-                    index={index}
-                    setCount={setCount}
-                    count = {count}
-                    setImgAnt={setImgAnt}
-                    imgAnt = {imgAnt}
-                    hits = {hits}
-                    setHits = {setHits}
-                    setStarTimer ={setStarTimer}
-                    indexImgAnt ={indexImgAnt}
-                    setIndexImgAnt = {setIndexImgAnt}
-                    boardImg = {boardImg}
-                    setBoardImg = {setBoardImg}
-                    mute={mute}
+                <button 
+                  key={img} 
+                  onClick ={() => { 
+                    setSelected(selected => [...selected, img])
+                    setCount(prev=> prev + 1)
+                  }}
                 >
-                  {boardImg[index] ? <img src={`src/assets/img/${img}.png`}></img> : ''}
-                </Square>
+                  {selected.includes(img) || guessed.includes(img) ? <img src={`src/assets/img/${numberImg}.png`}></img> : ''}
+                </button>
             )
           })
         }
-
         </section>
     )
 }
