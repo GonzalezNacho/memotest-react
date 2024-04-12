@@ -56,7 +56,8 @@ export const Table = ({setCount, setHits, setStarTimer, board, mute, reset, setR
                     setCount(prev=> prev + 1)
                   }}
                 >
-                  {selected.includes(img) || guessed.includes(img) ? <img src={`src/assets/img/${numberImg}.webp`}></img> : ''}
+                  <img style={{display :(selected.includes(img) || guessed.includes(img))? 'inline' : 'none' }} src={`src/assets/img/${numberImg}.webp`}></img>
+                  {/*(selected.includes(img) || guessed.includes(img)) && <img src={`src/assets/img/${numberImg}.webp`}></img>*/}
                 </button>
             )
           })
