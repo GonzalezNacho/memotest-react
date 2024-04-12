@@ -1,8 +1,8 @@
 export const Modal = ({ hits, time, count, resetGame, finish }) => {
     if (!finish) return null
     const resultadoPartida = hits == 8? 'Ganaste' : 'Perdiste'
-    const imgGanador = <img src="src/assets/img/win.png" alt="imagen de Mario y Luigi"></img> 
-    const imgPerdedor = <img src="src/assets/img/lose.png" alt="imagen de Bowser"></img>
+    const imgGanador = <img src="src/assets/img/win.webp" alt="imagen de Mario y Luigi"></img> 
+    const imgPerdedor = <img src="src/assets/img/lose.webp" alt="imagen de Bowser"></img>
     const imagenModal = hits == 8? imgGanador : imgPerdedor
     const info = hits == 8? <h4>Solo demoraste {30-time} segundos</h4> : <h4>aciertos: {hits} aciertos</h4>
 
