@@ -48,9 +48,8 @@ Este juego de memoria de Mario fue creado con amor por González Ignacio como un
 
 - **Mobile**
 
-![Imagen del Juego version mobile 1](https://github.com/GonzalezNacho/memotest-react/blob/main/public/movile1.jpg)
-
-![Imagen del Juego version mobile 2](https://github.com/GonzalezNacho/memotest-react/blob/main/public/movile2.jpg)
+<image src="https://github.com/GonzalezNacho/memotest-react/blob/main/public/movile1.jpg" alt="Imagen del Juego version mobile 1">
+<image src="https://github.com/GonzalezNacho/memotest-react/blob/main/public/movile2.jpg" alt="Imagen del Juego version mobile 2">
 
 - **Desktop**
 
