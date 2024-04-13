@@ -14,6 +14,10 @@ Este proyecto es un juego de memoria construido con React, con una divertida tem
 2. Recuerda la ubicación de cada personaje mientras tratas de hacer coincidir parejas idénticas.
 3. ¡Gana puntos al hacer coincidir todas las parejas antes de que se acabe el tiempo!
 
+## Deploy
+
+https://memotest-nacho.surge.sh
+
 ## Instalación
 
 1. Clona este repositorio en tu máquina local usando `git clone`.
@@ -40,3 +44,13 @@ Este juego de memoria de Mario fue creado con amor por González Ignacio como un
 
 
 --- 
+## Imagenes del Juego
+
+- **Mobile**
+
+![Imagen del Juego version mobile 1](https://github.com/GonzalezNacho/memotest-react/blob/main/public/movile1.jpg)
+![Imagen del Juego version mobile 2](https://github.com/GonzalezNacho/memotest-react/blob/main/public/movile2.jpg)
+
+- **Desktop**
+
+![Imagen del Juego version desktop](https://github.com/GonzalezNacho/memotest-react/blob/main/public/memotest.png)
