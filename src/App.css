@@ -54,6 +54,14 @@ button:hover {
   cursor:pointer;
 }
 
+.botonClikeado {
+  pointer-events:none;
+}
+
+.imagenOculta {
+  display: none;
+}
+
 #botonera {
   flex-direction: row;
 }

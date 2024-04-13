@@ -8,6 +8,7 @@ export const Table = ({setCount, setHits, setStarTimer, board, mute, reset, setR
 
     const [selected, setSelected] = useState([])
     const [guessed, setGuessed] = useState([])
+    
 
     useEffect(() => {
       if (reset) {
@@ -47,17 +48,18 @@ export const Table = ({setCount, setHits, setStarTimer, board, mute, reset, setR
         <section className="table">     
         {
           board.map((img) => {
+            const visibleImagen = selected.includes(img) || guessed.includes(img)
             const numberImg = img.split('|')[1]
             return (
-                <button 
+                <button
+                  className={ visibleImagen ? 'botonClikeado': ''} 
                   key={img} 
                   onClick ={() => { 
                     setSelected(selected => [...selected, img])
                     setCount(prev=> prev + 1)
                   }}
                 >
-                  <img style={{display :(selected.includes(img) || guessed.includes(img))? 'inline' : 'none' }} src={`src/assets/img/${numberImg}.webp`}></img>
-                  {/*(selected.includes(img) || guessed.includes(img)) && <img src={`src/assets/img/${numberImg}.webp`}></img>*/}
+                  <img className={ !visibleImagen ? 'imagenOculta': ''} src={`src/assets/img/${numberImg}.webp`}></img>
                 </button>
             )
           })
